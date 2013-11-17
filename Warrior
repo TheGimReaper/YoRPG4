@@ -1,0 +1,53 @@
+
+public class Warrior extends Character {
+
+    private String _name;
+
+
+    public Warrior(){
+	_Name = "Shoyu";
+	_MaxHP = 200;
+	_HP = 200;
+	_MaxMP = 50;
+	_MP = 50;
+	_Magic = (int) (Math.random()*10 + 30);
+	_Str = (int) (Math.random()*60 + 60);
+	_Def = (int) (Math.random()*60 + 60);
+	_AttackRating = 1.0;
+	_Level = 1;
+	_NextLevelExp = 100;
+	_CurrentExp = 0;
+	_Evasion = (int) (100 - Math.random()*20);
+	_Luck = (int) (100 - Math.random()*20);
+	_Accuracy = (int) (100 - Math.random()*20);
+	_About = "Warriors wield large swords with which they slay" +
+            "\nmonsters. They are more brawn than brain, so when training,"    +
+            "\nthey failed their magic classes.";
+    }
+
+    //sets stats for a warrior character created
+
+    public Warrior( String n ){
+	this();
+	_Name = n;
+    }
+    //sets stats and allows user to set name
+    
+    public String getName(){
+	return _Name;
+    }
+
+    public void statsUp(){
+	_Str += 3;
+	_Magic += 1;
+	_Def += 2;
+	_MaxHP += 2;
+	_Evasion += 1;
+	_Luck += 1;
+	_Accuracy +=1;
+    }
+
+
+}
+		
+    
