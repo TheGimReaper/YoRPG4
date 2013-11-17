@@ -1,0 +1,42 @@
+public class Fencer extends Character {
+
+    public Fencer() {
+	_Name = "Umeboshi";
+	_HP = 150;
+	_MP = 150;
+	_MaxHP = 150;
+	_MaxMP = 150;
+	_Magic = (int)(60 + Math.random()*20);
+	_Str = (int)(50 + Math.random()*40);
+	_Def = (int)(Math.random()*40 + 50);
+	_AttackRating = 1.0;
+	_Level = 1;
+	_NextLevelExp = 100;
+	_CurrentExp = 0;
+	_Evasion = (int)(80 + Math.random()*20);
+	_Luck = (int)(80 + Math.random()*20);
+	_Accuracy = (int)(80 + Math.random()*120);
+	_About = "Fencers use quick, thin swords. They're somewhat fast and strong." + 
+	    "\nBecause thinner swords are easier to use, they can focus more" +
+	    "\n on casting spells so they can enhance the power of their swords.";
+    }
+
+    public Fencer( String n ){
+	this();
+	_Name = n;
+    }    
+        
+    public String getName(){
+	return _Name;
+    }
+
+    public void statsUp(){
+	_Str += 2;
+	_Magic +=4;
+	_Def += 1;
+	_MaxHP += 2;
+	_Evasion += 4;
+	_Luck += 1;
+	_Accuracy +=3;
+    }
+}
