@@ -1,0 +1,48 @@
+public class Mage extends Character {
+
+    private String _name;
+
+    public Mage(){
+	_Name = "Natto";
+	_HP = 125;
+	_MP = 200;
+	_MaxHP = 125;
+	_MaxMP = 300;
+	_Magic = (int) (Math.random()*60 + 60);
+	_Str = (int)(Math.random()*10 + 20);
+	_Def = (int)(Math.random()*10 + 40);
+	_AttackRating = 1.0;
+	_Level = 1;
+	_NextLevelExp = 100;
+	_CurrentExp = 0;
+	_Evasion = (int)(80 - Math.random()*20);
+	_Luck = (int)(100 - Math.random()*15);
+	_Accuracy = (int)(100 - Math.random()*20);
+	_About = "Mages aren't very physically fit, but they can cast" +
+	    "\n many powerful spells.";
+    }
+
+    //sets stats for a mage character created
+
+    public Mage( String n ){
+	this();
+	_Name = n;
+    }
+    //sets stats and allows user to set name
+    
+    public String getName(){
+	return _Name;
+    }
+
+    public void statsUp(){
+	_Str += 1;
+	_Magic +=3;
+	_Def += 1;
+	_MaxHP += 2;
+	_Evasion += 2;
+	_Luck += 2;
+	_Accuracy +=2;
+    }
+
+
+}
