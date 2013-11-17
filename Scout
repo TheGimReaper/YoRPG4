@@ -1,0 +1,41 @@
+public class Scout extends Character {
+
+    public Scout() {
+	_Name = "Nori";
+	_HP = 150;
+	_MP = 125;
+	_MaxHP = 150;
+	_MaxMP = 125;
+	_Magic = (int) (50 + Math.random()*20);
+	_Str = (int)(Math.random()*20 + 60);
+	_Def = (int)(Math.random()*20 + 50);
+	_AttackRating = 1.0;
+	_Level = 1;
+	_NextLevelExp = 100;
+	_CurrentExp = 0;
+	_Evasion = (int)(100 - Math.random()*10);
+	_Luck = (int)(100 - Math.random()*10);
+	_Accuracy = 100;
+	_About = "Scouts are archers. They aren't too strong, but they are" +
+        "\nagile and always hit their targets.";
+    }
+
+    public Scout( String n ){
+	this();
+	_Name = n;
+    }    
+        
+    public String getName(){
+	return _Name;
+    }
+
+    public void statsUp(){
+	_Str += 2;
+	_Magic +=2;
+	_Def += 2;
+	_MaxHP += 2;
+	_Evasion += 4;
+	_Luck += 5;
+	_Accuracy +=4;
+    }
+}
