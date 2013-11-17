@@ -1,0 +1,43 @@
+public class Cestus extends Character {
+
+    public Cestus() {
+	_Name = "Konnyaku";
+	_HP = 175;
+	_MP = 75;
+	_MaxHP = 175;
+	_MaxMP = 75;
+	_Magic = (int)(Math.random()*80);
+	_Str = (int)(Math.random()*20 + 80);
+	_Def = (int)(Math.random()*20 + 80);
+	_AttackRating = 1.0;
+	_Level = 1;
+	_NextLevelExp = 100;
+	_CurrentExp = 0;
+	_Evasion = (int)(100 - Math.random()*15);
+	_Luck = (int)(100 - Math.random()*20);
+	_Accuracy = (int)(80 + Math.random()*10);
+	_About = "Cestus use their fists to fight. No weapons necessary." +
+	    "\n They are street fighters that fought to survive." +
+	    "They are strong and can endure a lot, but they haven't had any" +
+	    "education in magic. Some of them have picked it up on the streets.";
+    }
+
+    public Cestus( String n ){
+	this();
+	_Name = n;
+    }    
+        
+    public String getName(){
+	return _Name;
+    }
+
+    public void statsUp(){
+	_Str += 4;
+	_Magic += 1;
+	_Def += 3;
+	_MaxHP += 3;
+	_Evasion += 1;
+	_Luck += 1;
+	_Accuracy += 1;
+    }
+}
