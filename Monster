@@ -1,6 +1,7 @@
 public class Monster extends Character {
 
     private int _ExpDrop;
+    private int _GramDrop
 
     public Monster() {
 	_HP = 100;
@@ -9,6 +10,7 @@ public class Monster extends Character {
 	_Level = (int) (Math.random()*10);
 	_AttackRating = 1.0;
 	_ExpDrop = 5;
+	_GramDrop = (int) ((Math.random()*3)*_Level);
 	_About = "These creatures have been at peace for centuries with the humans until" +
 	    "\nthe black portal appeared on Raak Mountain." +
 	    "\nThen, they lost their ability to speak the human language" +
@@ -27,12 +29,16 @@ public class Monster extends Character {
     _Str = 25 + (int) (Math.random()*40) + (int) ( Math.random()* ( _Level*5 ) );
     _Def = 5 + (int) (Math.random()*40) + (int) ( Math.random()* ( _Level*5 ) );
     _ExpDrop = 5 + (int) ( _Level*1.25 );
+    _GramDrop = (int) ((Math.random()*3)*_Level);
 }
 
     public int dropExp(){
 	return _ExpDrop;
     }
-
+    public int dropGram(){
+        return _GramDrop;
+    }
+    
     public String getName(){return "Deadly Beastie";}
     public void normalize(){}
     public void specialize(){}
