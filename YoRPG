@@ -101,6 +101,7 @@ public class YoRPG {
 
 	if ( Math.random() > ( difficulty / 3.0 ) )
 	    System.out.println( "Nothing to see here. Move along!" );
+	    pat.gainMP(10);
 
 //Boss fight is really low. The battle sequence is the same as monster fights
 
@@ -120,7 +121,7 @@ public class YoRPG {
 
 		try {
 		    System.out.println( "Choose an action: " );
-		    System.out.println( "\t1: Attack\n\t2: Special Attack\n\t3: Magic\n\t4: Flee" );
+		    System.out.println( "\t1: Attack\n\t2: Special Attack\n\t3: Magic\n\t4: Flee\n\t5: Heal" );
 		    i = Integer.parseInt( in.readLine() );
 		}
 		catch ( IOException e ) { }
@@ -149,9 +150,12 @@ public class YoRPG {
 
 //If you chose any action but flee, you deal damage. 
 //You normally wouldn't do damage to an enemy if you're busy running :p	    
-		if ( i != 4 ){
-		    pat.attack( smaug );
-		}
+		 if (i == 5) {
+                    pat.heal();
+                }
+                if ( i < 4 ){
+                    pat.attack( smaug );
+                }
 
 		smaug.attack( pat );
 	    
@@ -200,7 +204,7 @@ public class YoRPG {
 		// ...but if you get hit, you take more damage.
 		try {
 		    System.out.println( "Choose an action: " );
-		    System.out.println( "\t1: Attack\n\t2: Special Attack\n\t3: Magic\n\t4: Flee" );
+		    System.out.println( "\t1: Attack\n\t2: Special Attack\n\t3: Magic\n\t4: Flee\n\t5: Heal" );
 		    i = Integer.parseInt( in.readLine() );
 		}
 		catch ( IOException e ) { }
@@ -225,9 +229,12 @@ public class YoRPG {
 		    pat.normalize();
 		}
 	    
-		if ( i != 4 ){
-		    pat.attack( smaug );
-		}
+		 if (i == 5) {
+                    pat.heal();
+                }
+                if ( i < 4 ){
+                    pat.attack( smaug );
+                }
 
 		smaug.attack( pat );
 	    
