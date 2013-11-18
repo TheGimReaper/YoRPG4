@@ -9,7 +9,7 @@ public class YoRPG {
 
 
     private Character pat;  
-    private Monster smaug;
+    private Character smaug;
 
     private int moveCount;
     private boolean gameOver;
@@ -64,7 +64,9 @@ public class YoRPG {
 	    k = Integer.parseInt( in.readLine() );
 	}
 	catch ( IOException e ) { }
-	
+
+//choose your class by input of a number. (Warrior, Mage, Scout, Cestus, Fencer)
+
 	if ( k == 1 ){
 	    
 	    pat = new Warrior( name );
@@ -100,10 +102,89 @@ public class YoRPG {
 	if ( Math.random() > ( difficulty / 3.0 ) )
 	    System.out.println( "Nothing to see here. Move along!" );
 
-	//	else if ( Math.random() = ( difficulty / 3.0 ) ){
-	//	    System.out.println( //Whatever nameless class we add 
-			       //				)
-		//appropriate class stuff.
+//Boss fight is really low. The battle sequence is the same as monster fights
+
+	else if ( Math.random() = ( difficulty / 3.0 ) ){
+	    System.out.println( "Oh noes, a powerful beastie has appeared!" )
+	    
+	    smaug = new Boss( playerLvl );
+	    
+	    while( smaug.isAlive() && pat.isAlive() ) {
+
+		// Give user the option of using a special attack:
+		// If you land a hit, you incur greater damage,
+		// ...but if you get hit, you take more damage.
+		
+//the player uses an action by typing the corresponding number
+//the input gets read and the program acts accordingly (normal, special, magic, or flee)
+
+		try {
+		    System.out.println( "Choose an action: " );
+		    System.out.println( "\t1: Attack\n\t2: Special Attack\n\t3: Magic\n\t4: Flee" );
+		    i = Integer.parseInt( in.readLine() );
+		}
+		catch ( IOException e ) { }
+	    
+		if ( i == 2 ){
+		    pat.specialize();
+		}
+		else if ( i == 3 ){
+		    pat.magicalize();
+		}
+		
+//fleed is coded in Character. Its a boolean ret type. 
+//So if fleed() is true, well, you flee and break out of this battle loop
+		else if ( i == 4 ){
+		    if ( pat.fleed() ){
+			System.out.println("You have fled from the beastie.");
+			break;    
+		    }
+		    else{
+			System.out.println("You're still here.");
+		    }
+		}
+		else{
+		    pat.normalize();
+		}
+
+//If you chose any action but flee, you deal damage. 
+//You normally wouldn't do damage to an enemy if you're busy running :p	    
+		if ( i != 4 ){
+		    pat.attack( smaug );
+		}
+
+		smaug.attack( pat );
+	    
+	    }
+	    
+	    //option 1: you & the monster perish
+	    if ( !smaug.isAlive() && !pat.isAlive() ) {
+		System.out.println( "'Twas an epic battle, to be sure... " + 
+				    "You cut ye olde monster down, but " +
+				    "with its dying breath ye olde monster. " +
+				    "laid a fatal blow upon thy skull." );
+		return false;
+	    }
+	    
+	    //option 2: you slay the beast
+	    else if ( !smaug.isAlive() ) {
+		System.out.println( "HuzzaaH! Ye olde monster hath been slain!" );
+		pat.expGain( smaug );
+		return true;
+	    }
+	    //option 3: the beast slays you
+	    else if ( !pat.isAlive() ) {
+		System.out.println( "Ye olde self hath expired. You got dead." );
+		return false;
+	    }
+	}
+	return true;
+    }
+ 
+	    
+	    }
+
+//regular monster battle.
 
 	else {
 	    System.out.println( "Lo, yonder monster approacheth!" );
