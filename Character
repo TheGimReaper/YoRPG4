@@ -27,6 +27,8 @@ public abstract class Character {
     protected int _Attack;
     protected int _TmpDef;
 
+    protected int _Grams;
+    
     public Character(){
     }
     
@@ -75,6 +77,21 @@ public abstract class Character {
 	System.out.println("You have gained " + c.dropExp() + " EXP!");
 	lvlUp();
 	return _CurrentExp;
+    }
+    
+//Grams gain every time a monster dies.
+        public int gramGain ( Monster c ) {
+        _Grams += c.dropGram();
+        System.out.println("You have gained " + c.dropGram() + " Grams!");
+        System.out.println("You have " + _Grams + "Grams!");
+        return _Grams;
+    }
+
+    public void lowerGram ( int d ) {
+	if (_Grams > d) {
+            _Grams -= d;
+            System.out.printn("You have " + _Grams + "Grams!");
+        }
     }
     
     public boolean fleed(){
