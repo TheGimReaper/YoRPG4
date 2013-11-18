@@ -91,6 +91,15 @@ public abstract class Character {
     }
 //subtract health, does not need to return anything, could return current health though
 
+    public void gainMP( int d ) {
+        if ((_MP + d) < _MaxMP) {
+            _MP += d;
+        }
+        else {
+            _MP = _MaxMP;
+        }
+    }
+    // adds mana, does not return anything                                             
 
     public boolean hasHit( Character c ){
 	if (((int) (Math.random()*_Accuracy)) >= ((int) (Math.random()*c.getEvasion()))){
@@ -149,6 +158,18 @@ public abstract class Character {
             System.out.println("Not enough MP. :c");
 	}
     }    
+
+    public void heal() {
+        if (_MP >= 20) {
+            gainHP((int) (_Magic*0.25));
+            _MP -=20;
+            System.out.println(" HP: " + _HP);
+        }
+        else {
+            System.out.println("Not enough MP. :c");
+        }
+        System.out.println(" MP: " + _MP);
+    }
 
     public String tellAbout() {
 	return _About;
