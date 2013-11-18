@@ -1,0 +1,34 @@
+public class Boss extends Character {
+    
+    protected int _ExpDrop;
+
+    // Default constructor
+    public Boss() {
+	_HP = 500;
+	_Str = 50 + (int) (Math.random()*40);
+	_Def = 50 + (int) (Math.random()*40);
+	_Level = (int) (Math.random()*10);
+	_ExpDrop = 5;
+	_About = "These are far more advanced monsters than the ones seen on a daily basis. They are the leaders of monster packs, but are rarely encountered because they usually have their group members do the dirty work.";
+    }
+
+
+    public Boss( int lvls ){
+	this();
+	_Level = lvls + (int) ( Math.random() * ( 15 ) );
+	_HP = 200 + (int) ( Math.random()* ( _Level*10 ) );//is this a good random calculation?
+	_Str = 40 + (int) (Math.random()*40) + (int) ( Math.random()* ( _Level*5 ) );
+	_Def = 40 + (int) (Math.random()*40) + (int) ( Math.random()* ( _Level*5 ) );
+	_ExpDrop = 30 + (int) ( _Level*1.25 );
+    }
+
+    public int dropExp(){
+	return _ExpDrop;
+    }
+
+    public String getName(){return "Deadly Leader";}
+    public void normalize(){}
+    public void specialize(){}
+    public void statsUp(){}
+
+}
