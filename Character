@@ -23,7 +23,7 @@ public abstract class Character {
    
     protected int _Catch;
 
-    //temporary stat holder for specials and stuff 
+//temporary stat holder for specials and stuff 
     protected int _Attack;
     protected int _TmpDef;
 
@@ -36,13 +36,11 @@ public abstract class Character {
 	}
 	return true;
     }
-    //is _ alive?
 
     public int getDefense(){
 	return _Def;
     }
-    //defense, used for damage calculations in attack()
-
+    
     public int getEvasion(){
 	return _Evasion;
     }
@@ -59,6 +57,7 @@ public abstract class Character {
 	return _MP;
     }
 
+//Yay level up system! Does what a normal lvl up system does. Excess EXP is carried over when you lvl up.
     public int lvlUp(){
 	if ( _CurrentExp > _NextLevelExp ){
 	    _Level += 1;
@@ -70,6 +69,7 @@ public abstract class Character {
 	return _Level;
     }
 
+//EXP gain every time a monster dies. (In this case smaug) This is put in the YoRPG class when smaug dies
     public int expGain( Monster c ){
 	_CurrentExp += c.dropExp();
 	System.out.println("You have gained " + c.dropExp() + " EXP!");
@@ -82,14 +82,14 @@ public abstract class Character {
 	    return true; }
 	return false;
     }
-    //if random int 0 - _Luck + 10 < _luck, escape from battle. else you're stuck.
+//if random int 0 - _Luck + 10 < _luck, escape from battle. else you're stuck.
 
 
     public void lowerHP( int d ){
 	_HP -= d;
 	System.out.println(getName()+" HP: "+_HP);
     }
-    //subtract health, does not need to return anything, could return current health though
+//subtract health, does not need to return anything, could return current health though
 
 
     public boolean hasHit( Character c ){
@@ -97,7 +97,9 @@ public abstract class Character {
 	    return true; }
 	return false;
     }
-    //Choses a random int from 0 to _accuracy of attacker, and checks if that is greater than a random int from 0 to _evasion of the defender. If it is > the attack will go through. (see attack method)
+//Choses a random int from 0 to _accuracy of attacker, 
+//and checks if that is greater than a random int from 0 to _evasion of the defender. 
+//If it is > the attack will go through. (see attack method)
 
 
     public void attack( Character c ){
@@ -108,17 +110,19 @@ public abstract class Character {
 	    }
 	    c.lowerHP( damage ); 
 	    System.out.println(c.getName()+" took "+damage+" damage.");  }
-	//prints the amount of damage the opposing side takes, so there is no need for this in the driver class. Same for the bottom line, except the character has missed their attack. 
+//prints the amount of damage the opposing side takes, so there is no need for this in the driver class. 
+//Same for the bottom line, except the character has missed their attack and no damage is dealt. 
 	else {
 	    System.out.println(getName()+" has missed!");	}
     }
-    //calculates damage dealt and lowers hp of enemy
+
+
 
     public abstract String getName();
     //get name of char if it has
 
     public abstract void statsUp();
-    //increase stats according to char.
+    //increase stats according to char when level up.
 
 
     public void specialize() {
@@ -131,7 +135,9 @@ public abstract class Character {
         _TmpDef = _Def;
     }
 
-    public void magicalize(){//for Magic attacks
+//for Magic attacks
+//if player has enough mp, do a magic attack. else nothing happens
+    public void magicalize(){
 	if ( _MP >= 5 ){
 	    _Attack = _Magic;
 	    _MP -= 5;
@@ -141,7 +147,7 @@ public abstract class Character {
             _Attack = 0;
 	    _TmpDef = _Def;
             System.out.println("Not enough MP. :c");
-	}//if player has enough mp, do a magic attack. else nothing happens
+	}
     }    
 
     public String tellAbout() {
