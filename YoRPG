@@ -104,10 +104,10 @@ public class YoRPG {
 
 //Boss fight is really low. The battle sequence is the same as monster fights
 
-	else if ( Math.random() = ( difficulty / 3.0 ) ){
+	else if ( Math.random() == ( difficulty / 3.0 ) ){
 	    System.out.println( "Oh noes, a powerful beastie has appeared!" )
 	    
-	    smaug = new Boss( playerLvl );
+	    smaug = new Boss( pat.getLevel() );
 	    
 	    while( smaug.isAlive() && pat.isAlive() ) {
 
